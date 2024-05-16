@@ -1,7 +1,13 @@
 package route
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"Gokomodo/controller"
 
-func RouteInit(c *fiber.Ctx) {
+	"github.com/gofiber/fiber/v2"
+)
 
+func RouteInit(c *fiber.App) {
+	auth := c.Group("/auth")
+	auth.Post("/registerSeller", controller.RegisterSeller)
+	auth.Post("/registerBuyer", controller.RegisterBuyer)
 }

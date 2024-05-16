@@ -1,6 +1,7 @@
 package main
 
 import (
+	"Gokomodo/route"
 	"strings"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -19,7 +20,11 @@ func main() {
 			fiber.MethodPatch,
 			fiber.MethodPut,
 			fiber.MethodDelete,
-		}, "*"),
+		}, ","),
 	}))
+
+	route.RouteInit(app)
+
+	app.Listen("localhost:8080")
 
 }
