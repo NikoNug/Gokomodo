@@ -1,6 +1,7 @@
 package main
 
 import (
+	"Gokomodo/db"
 	"Gokomodo/route"
 	"strings"
 
@@ -10,6 +11,7 @@ import (
 )
 
 func main() {
+	db.ConnectDB()
 	app := fiber.New()
 
 	app.Use(cors.New(cors.Config{
