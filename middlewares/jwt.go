@@ -7,40 +7,6 @@ import (
 	"github.com/golang-jwt/jwt/v4"
 )
 
-// func JWTMiddleware(c *fiber.Ctx) error {
-// 	cookie := c.Cookies("token")
-// 	if cookie == "" {
-// 		return c.Status(http.StatusNotFound).SendString("Cookies not found")
-// 	}
-
-// 	tokenString := cookie
-
-// 	claims := config.JWTClaim{}
-
-// 	// parse the token
-// 	token, err := jwt.ParseWithClaims(tokenString, claims, func(t *jwt.Token) (interface{}, error) {
-// 		return config.JWT_KEY, nil
-// 	})
-
-// 	if err != nil {
-// 		v, _ := err.(*jwt.ValidationError)
-// 		switch v.Errors {
-// 		case jwt.ValidationErrorSignatureInvalid:
-// 			return c.Status(http.StatusUnauthorized).SendString(err.Error())
-// 		case jwt.ValidationErrorExpired:
-// 			return c.Status(http.StatusUnauthorized).SendString(err.Error() + "Token expired")
-// 		default:
-// 			return c.Status(http.StatusUnauthorized).SendString(err.Error())
-// 		}
-// 	}
-
-// 	if !token.Valid {
-// 		return c.Status(http.StatusUnauthorized).SendString("You are not authorized")
-// 	}
-
-// 	return c.Next()
-// }
-
 func JWTMiddleware() fiber.Handler {
 	return func(c *fiber.Ctx) error {
 		// extract token from cookie
